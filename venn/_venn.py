@@ -80,13 +80,13 @@ def generate_petal_labels(datasets, fmt="{size}"):
 def init_axes(ax, figsize):
     """Create axes if do not exist, set axes parameters"""
     if ax is None:
-        _, ax = subplots(nrows=1, ncols=1, figsize=figsize)
+        fig, ax = subplots(nrows=1, ncols=1, figsize=figsize)
     ax.set(
         aspect="equal", frame_on=False,
         xlim=(-.05, 1.05), ylim=(-.05, 1.05),
         xticks=[], yticks=[]
     )
-    return ax
+    return fig, ax
 
 def get_n_sets(petal_labels, dataset_labels):
     """Infer number of sets, check consistency"""
@@ -107,7 +107,7 @@ def draw_venn(*, petal_labels, dataset_labels, hint_hidden, colors, figsize, fon
         draw_shape = draw_triangle
     else:
         raise ValueError("Number of sets must be between 2 and 6")
-    ax = init_axes(ax, figsize)
+    fig, ax = init_axes(ax, figsize)
     shape_params = zip(
         SHAPE_COORDS[n_sets], SHAPE_DIMS[n_sets], SHAPE_ANGLES[n_sets], colors
     )
@@ -120,7 +120,7 @@ def draw_venn(*, petal_labels, dataset_labels, hint_hidden, colors, figsize, fon
             draw_text(ax, x, y, petal_label, fontsize=fontsize)
     if legend_loc is not None:
         ax.legend(dataset_labels, loc=legend_loc, prop={"size": fontsize})
-    return ax
+    return fig, ax
 
 def update_hidden(hidden, logic, petal_labels):
     """Increment set's hidden count (sizes of intersections that are not displayed)"""
