@@ -187,8 +187,7 @@ def venn_dispatch(data, func, fmt="{size}", hint_hidden=False, cmap="viridis", a
     if hint_hidden and (func == draw_pseudovenn6) and (fmt != "{size}"):
         error_message = "To use fmt='{}', set hint_hidden=False".format(fmt)
         raise NotImplementedError(error_message)
-    n_sets = len(data)
-    print("doing anything????")
+    n_setss = len(data)
     return func(
         petal_labels=generate_petal_labels(data.values(), fmt),
         dataset_labels=data.keys(), hint_hidden=hint_hidden,
