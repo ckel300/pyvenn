@@ -195,5 +195,5 @@ def venn_dispatch(data, func, fmt="{size}", hint_hidden=False, cmap="viridis", a
         figsize=figsize, fontsize=fontsize, legend_loc=legend_loc, ax=ax
     )
 
-venno = partial(venn_dispatch, func=draw_venn, hint_hidden=False)
+venn = partial(venn_dispatch, func=draw_venn, hint_hidden=False)
 pseudovenn = partial(venn_dispatch, func=draw_pseudovenn6, hint_hidden=True)
