@@ -120,7 +120,7 @@ def draw_venn(*, petal_labels, dataset_labels, hint_hidden, colors, figsize, fon
             draw_text(ax, x, y, petal_label, fontsize=fontsize)
     if legend_loc is not None:
         ax.legend(dataset_labels, loc=legend_loc, prop={"size": fontsize})
-    return fig, ax
+    return fig
 
 def update_hidden(hidden, logic, petal_labels):
     """Increment set's hidden count (sizes of intersections that are not displayed)"""
